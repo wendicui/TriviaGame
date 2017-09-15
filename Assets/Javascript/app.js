@@ -1,7 +1,9 @@
 
+start();
 $("audio").attr('src', 'Assets/Audio/Lion.mp3');
 $(".start").click(begin)
 
+var index = 0;
 var timeInter
 var num = 5;
 var quess = [];
@@ -11,6 +13,15 @@ var right = 0;
 var wrong = 0;
 var notGuess = 0;
 var running = false;
+//add varible to make front page figure animate
+var first = true;
+var image = ["Assets/Images/1.png",
+			"Assets/Images/2.png",
+			"Assets/Images/3.png",
+			"Assets/Images/4.png",
+			"Assets/Images/5.png",
+			"Assets/Images/6.png",		
+			]
 
 //build question object	, the last object is always the correct answer
 	function buildQues(ques, answ1, answ2, answ3, answ4, img){
@@ -34,10 +45,17 @@ var running = false;
 	}
 	callbuild()
 
+
+	function next(){
+
+
+	}
+
 //set up timer
 
 	function begin(){
-		
+		clear();
+		first = false;
 		if(left > 0){
 //clear all the divs and reset number
 			reset();
@@ -64,6 +82,7 @@ var running = false;
 	}
 
 	function start(){
+
 		if(!running){
 		timeInter = setInterval(countDown,1000);
 		running = true;
@@ -71,16 +90,29 @@ var running = false;
 	}
 
 	function countDown(){
+		// if not first, then it is regualr count down
+		if(!first){
+			num--;
+			if(num < 0){
+				num = 0;
+				clear();
+				showCorrect("What are you waiting for?", "The answer is "+ chosen.right);
+				notGuess++
 
-		num--;
-		if(num < 0){
-			num = 0;
-			clear();
-			showCorrect("What are you waiting for?", "The answer is "+ chosen.right);
-			notGuess++
-
-		}
-		$(".time").html("Time Remaining: " + num);			
+			}
+			$(".time").html("Time Remaining: " + num);
+		}else{
+		// if it is first page, then it is fiture change
+			//console.log("on")
+			if(index < 6){
+				$("#img").attr('src', image[index]);
+				index++;
+			}else{ 
+				index = 0;
+				$("#img").attr('src', image[index]);
+				index++;
+			}
+		}			
 	}
 
 	function clear(){
@@ -130,7 +162,6 @@ var running = false;
 			right++
 		}else{
 			showCorrect("Sadly Wrong","The answer is " + chosen.right)
-
 			wrong++
 		}
 	}
@@ -157,6 +188,8 @@ var running = false;
 		callbuild();
 		begin();
 		console.log("fn")})
+
+
 
 
 

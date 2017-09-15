@@ -98,7 +98,6 @@ var image = ["Assets/Images/1.png",
 				clear();
 				showCorrect("What are you waiting for?", "The answer is "+ chosen.right);
 				notGuess++
-
 			}
 			$(".time").html("Time Remaining: " + num);
 		}else{
@@ -113,6 +112,7 @@ var image = ["Assets/Images/1.png",
 				index++;
 			}
 		}			
+
 	}
 
 	function clear(){

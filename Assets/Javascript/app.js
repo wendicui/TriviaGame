@@ -76,7 +76,7 @@ var running = false;
 		if(num < 0){
 			num = 0;
 			clear();
-			showCorrect("What are you waiting for?", "The answer is "+ chosen.right);
+			showCorrect("What are you waiting for?", "The answer is " + chosen.right);
 			notGuess++
 
 		}

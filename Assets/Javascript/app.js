@@ -20,7 +20,7 @@ var image = ["Assets/Images/1.png",
 			"Assets/Images/3.png",
 			"Assets/Images/4.png",
 			"Assets/Images/5.png",
-			"Assets/Images/6.png",		
+			"Assets/Images/6.png",
 			]
 
 //build question object	, the last object is always the correct answer
@@ -64,7 +64,7 @@ var image = ["Assets/Images/1.png",
 			$(".start").hide();
 			$(".time").html("Time Remaining: " + num);
 
-			
+
 	//call display function to display question
 			display();
 			$(".answer").click(check)
@@ -106,12 +106,12 @@ var image = ["Assets/Images/1.png",
 			if(index < 6){
 				$("#img").attr('src', image[index]);
 				index++;
-			}else{ 
+			}else{
 				index = 0;
 				$("#img").attr('src', image[index]);
 				index++;
 			}
-		}			
+		}
 
 	}
 
@@ -130,6 +130,7 @@ var image = ["Assets/Images/1.png",
 		var random = Math.floor(Math.random() * quess.length)
 		chosen = quess[random]
 		quess.splice(random,1)
+		console.log("testing 1234");
 	//make a functin that take argument, make div and add it to page
 			function makediv(x, i){
 
@@ -137,7 +138,7 @@ var image = ["Assets/Images/1.png",
 				div.attr("class", i);
 				$(".question").append(div);
 			}
-	//add  question	to page	
+	//add  question	to page
 			makediv(chosen.ques, "quest") ;
 	//make answers display in random order on to page;
 		var array2 = ["fir", "sec", "thi", "right"]
@@ -146,7 +147,7 @@ var image = ["Assets/Images/1.png",
 				makediv(chosen[array2[random2]], "answer" + " " + array2[random2]);
 				array2.splice(random2,1)
 			}
-		
+
 	//keep add answers to page until all are added
 			while(array2.length > 0){
 				add()
@@ -169,10 +170,10 @@ var image = ["Assets/Images/1.png",
 //generate the correct answer
 	function showCorrect(x, y){
 		$(".question").html(x + "</br>" + y);
-		$(".question").append("<img src = 'Assets/Images/" + chosen.img + "' class = 'gif'>" )  
+		$(".question").append("<img src = 'Assets/Images/" + chosen.img + "' class = 'gif'>" )
 
 		setTimeout(begin,5000) ;
-		left--; 
+		left--;
 	}
 // final result:
 	function result(){
@@ -180,19 +181,11 @@ var image = ["Assets/Images/1.png",
 		$(".question").append("<div> Correct Answers: " + right +"</div>");
 		$(".question").append("<div> Wrong Answers: " + wrong +"</div>");
 		$(".question").append("<div> Unchosen: " + notGuess +"</div>");
-		$(".question").append("<div id = 'again'> Start Over</div>");	
+		$(".question").append("<div id = 'again'> Start Over</div>");
 	}
 
-	$(".question").on("click","#again", function(){ 
+	$(".question").on("click","#again", function(){
 		left = 4;
 		callbuild();
 		begin();
 		console.log("fn")})
-
-
-
-
-
-
-
-

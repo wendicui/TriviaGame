@@ -131,6 +131,7 @@ var image = ["Assets/Images/1.png",
 		chosen = quess[random]
 		quess.splice(random,1)
 		console.log("testing 1234");
+		var test = 5424;
 	//make a functin that take argument, make div and add it to page
 			function makediv(x, i){
 
